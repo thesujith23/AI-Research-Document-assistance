@@ -6,9 +6,12 @@ from sentence_transformers import SentenceTransformer
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
 
+import streamlit as st
+
 MODEL_NAME = "all-MiniLM-L6-v2"
 _model = None
 
+@st.cache_resource(show_spinner=False)
 def _get_model():
     global _model
     if _model is None:

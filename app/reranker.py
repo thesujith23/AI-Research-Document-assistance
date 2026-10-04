@@ -5,8 +5,11 @@ from sentence_transformers import CrossEncoder
 os.environ["OMP_NUM_THREADS"] = "1"
 os.environ["OPENBLAS_NUM_THREADS"] = "1"
 
+import streamlit as st
+
 _reranker_model = None
 
+@st.cache_resource(show_spinner=False)
 def _get_model():
     global _reranker_model
     if _reranker_model is None:

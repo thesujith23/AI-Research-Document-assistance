@@ -16,3 +16,12 @@ htmlcov/
 build/
 dist/
 *.egg-info/
+.pytest_cache/
+
+# Local data & temporary files
+data/documents/*
+!data/documents/.gitkeep
+temp/
+tmp/
+*.index
+faiss_index/

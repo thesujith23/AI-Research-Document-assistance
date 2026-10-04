@@ -238,3 +238,54 @@ Because Cross-Encoders are so computationally expensive, you cannot run them on 
 
 **The Impact**
 By adding a lightweight Cross-Encoder (`ms-marco-MiniLM-L-6-v2`), we proved mathematically that our `Recall@1` (getting the perfect answer on the very first try) improved drastically without changing our underlying FAISS index!
+
+### Stage 9: Hybrid Search & Reciprocal Rank Fusion (RRF)
+**What is Hybrid Search?**
+Hybrid search combines two fundamentally different retrieval strategies: Semantic Search and Keyword Search.
+
+**Why Semantic Search (Vector Search) alone may not be enough:**
+Semantic search (FAISS) is amazing at understanding meaning and concepts. However, it can struggle when you need to find an exact technical term, an acronym, a specific part number, or a person's name. If the embedding model wasn't trained heavily on a specific acronym (like 'RRF'), it might not know how to vectorize it properly, leading to poor retrieval.
+
+**What is Keyword/BM25 Search?**
+BM25 (Best Matching 25) is a sparse, keyword-based search algorithm. It scores documents based on exact word matches, using Term Frequency (how often the word appears in the document) and Inverse Document Frequency (how rare the word is across all documents). 
+
+**When Keyword Search outperforms Semantic Search:**
+Keyword search is better for finding exact phrases, technical terms, acronyms, and numbers. For example, if you search for the exact error code 'ERR_CONNECTION_REFUSED', BM25 will perfectly match the document containing that exact string, whereas semantic search might just find generic networking documents.
+
+**How they complement each other:**
+Semantic search handles the "meaning" (synonyms, phrasing, concepts), while keyword search handles the "exact matches" (names, IDs, acronyms). Together, they cover each other's blind spots.
+
+**What is Score Normalization?**
+FAISS outputs cosine similarity scores usually ranging from 0.0 to 1.0. BM25 outputs unbounded scores that can easily be 10, 30, or 100. Because the scales are entirely different, you cannot simply add a FAISS score to a BM25 score.
+
+**What is Reciprocal Rank Fusion (RRF)?**
+Reciprocal Rank Fusion is a robust algorithm to combine results from multiple search systems without needing to normalize their scores. Instead of looking at the *scores*, RRF looks at the *rank* (position 1, 2, 3...) of the document in each system's result list.
+
+**The RRF Formula:**
+For a given chunk `d`, the RRF score is:
+```
+RRF_score(d) = sum( 1 / (k + rank(d)) )
+```
+*(where `rank(d)` is the 1-based rank of the chunk in a retriever's results, and `k` is a constant usually set to 60).*
+
+**Why RRF is useful:**
+If FAISS ranks a chunk #1 and BM25 ranks it #2, it gets a high RRF score because it's highly ranked by both. If BM25 ranks a chunk #1 but FAISS didn't even find it, it still gets a good score from BM25's side. This beautifully interleaves the results, ensuring that chunks agreed upon by multiple systems float to the top, without worrying about score scaling issues.
+
+## Deployment
+
+This application is ready to be deployed to the cloud (e.g., Streamlit Community Cloud, Heroku, AWS, etc.).
+
+### Deploying to Streamlit Community Cloud
+1. Push this repository to GitHub.
+2. Go to [share.streamlit.io](https://share.streamlit.io/) and connect your GitHub account.
+3. Select this repository and set the main file path to `app/ui.py`.
+4. **Environment Variables**: In the Streamlit dashboard, go to Settings > Secrets and add your API keys:
+   ```toml
+   OPENROUTER_API_KEY="your_key_here"
+   ```
+5. Click **Deploy**!
+
+### Important Deployment Notes
+- **Temporary Storage**: Uploaded documents are processed entirely in memory or temporary directories. No persistent disk storage is required.
+- **Dependencies**: All required packages are listed in `requirements.txt`.
+- **Performance**: The SentenceTransformer and Cross-Encoder models are aggressively cached using `@st.cache_resource` to ensure they are only loaded once per server instance, rather than on every user interaction.

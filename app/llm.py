@@ -74,10 +74,18 @@ USER QUESTION:
     
     # 3. Call the LLM
     try:
+        import streamlit as st
         # Point the OpenAI SDK to OpenRouter's API URL
+        api_key = os.environ.get("OPENROUTER_API_KEY")
+        if not api_key:
+            try:
+                api_key = st.secrets.get("OPENROUTER_API_KEY")
+            except Exception:
+                pass
+                
         client = OpenAI(
             base_url="https://openrouter.ai/api/v1",
-            api_key=os.environ.get("OPENROUTER_API_KEY"),
+            api_key=api_key,
         )
         
         response = client.chat.completions.create(

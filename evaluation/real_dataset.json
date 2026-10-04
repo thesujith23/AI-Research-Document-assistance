@@ -1,77 +1,182 @@
 [
     {
         "question": "What is machine learning according to the introduction?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [6]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            6
+        ]
     },
     {
         "question": "What is the target function to be learned in the credit approval system?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [13]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            13
+        ]
     },
     {
         "question": "What is reinforcement learning?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [19]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            19
+        ]
     },
     {
         "question": "What is the definition of an instance space X?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [26]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            26
+        ]
     },
     {
         "question": "What happens when the outlook is Overcast in the Play Golf example?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [33]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            33
+        ]
     },
     {
         "question": "What do dendrites represent in Artificial Neural Networks?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [46]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            46
+        ]
     },
     {
         "question": "What are support vectors in an SVM algorithm?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [56]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            56
+        ]
     },
     {
         "question": "What is learner fusion in a multiexpert combination?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [66]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            66
+        ]
     },
     {
         "question": "Why are random forest models considered black boxes?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [76]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            76
+        ]
     },
     {
         "question": "How does the algorithm cycle through dimensions based on tree depth?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [86]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            86
+        ]
     },
     {
         "question": "What does Q refer to in the Q learning algorithm?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [96]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            96
+        ]
     },
     {
         "question": "What are the inputs to the algorithm for ranking candidate hypotheses?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [106]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            106
+        ]
     },
     {
         "question": "What do the brackets and 1 indicate for crossover points?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [111]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            111
+        ]
     },
     {
         "question": "What percentage of the current population is retained unchanged in GP experiments?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [116]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            116
+        ]
     },
     {
         "question": "What happened when no individual learning was allowed in the experiments?",
-        "expected_sources": ["MACHINE LEARNING(R17A0534).pdf"],
-        "expected_pages": [120]
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            120
+        ]
+    },
+    {
+        "question": "Why do we use Regression Analysis?",
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            38
+        ]
+    },
+    {
+        "question": "What is the prerequisite before starting the Artificial Neural Network Tutorial?",
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            50
+        ]
+    },
+    {
+        "question": "How do we initialize the value of the centroids for our clusters?",
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            62
+        ]
+    },
+    {
+        "question": "What is the definition of the maximum likelihood solution?",
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            80
+        ]
+    },
+    {
+        "question": "What topics are covered in Unit IV?",
+        "expected_sources": [
+            "MACHINE LEARNING(R17A0534).pdf"
+        ],
+        "expected_pages": [
+            90
+        ]
     }
 ]

@@ -241,6 +241,18 @@ elif st.session_state.stage == "processing":
 # Ask screen.
 else:
     stepper("ask")
+    
+    # Check for API key (Required for LLM generation)
+    api_key = os.environ.get("OPENROUTER_API_KEY") or os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        try:
+            api_key = st.secrets.get("OPENROUTER_API_KEY") or st.secrets.get("OPENAI_API_KEY")
+        except Exception:
+            pass
+    
+    if not api_key:
+        st.warning("⚠️ API Key is missing! The LLM will not be able to generate answers until this is set in the `.env` file or Streamlit secrets.")
+        
     st.markdown('<div class="ask-wrap"><div class="ask-heading"><h1>Ask your<br><span>documents.</span></h1><div class="library-tag">' + str(len(st.session_state.indexed_documents)) + ' documents ready</div></div>', unsafe_allow_html=True)
     st.markdown('<div class="ask-label">Research question</div>', unsafe_allow_html=True)
     question = st.text_input("Question", value=st.session_state.question, placeholder="e.g. What are the main findings?", label_visibility="collapsed")
@@ -300,5 +312,4 @@ else:
         for item in st.session_state.history[:3]:
             history += f'<div class="history-item">{item["question"]}<div class="history-time">{item["time"]}</div></div>'
         st.markdown(history + '</div>', unsafe_allow_html=True)
-
     st.markdown('</div>', unsafe_allow_html=True)
