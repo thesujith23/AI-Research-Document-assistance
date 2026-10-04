@@ -1,0 +1,52 @@
+[
+    {
+        "question": "What is the capital of France?",
+        "expected_sources": ["geography.pdf"],
+        "expected_pages": [1]
+    },
+    {
+        "question": "How do plants make their food?",
+        "expected_sources": ["biology.pdf"],
+        "expected_pages": [5]
+    },
+    {
+        "question": "What year did the moon landing occur?",
+        "expected_sources": ["history.pdf"],
+        "expected_pages": [12]
+    },
+    {
+        "question": "What are the main ingredients of a pizza?",
+        "expected_sources": ["cookbook.pdf"],
+        "expected_pages": [3]
+    },
+    {
+        "question": "How does a neural network learn?",
+        "expected_sources": ["ai_book.pdf"],
+        "expected_pages": [25]
+    },
+    {
+        "question": "Who wrote Romeo and Juliet?",
+        "expected_sources": ["literature.pdf"],
+        "expected_pages": [8]
+    },
+    {
+        "question": "What is the boiling point of water?",
+        "expected_sources": ["physics.pdf"],
+        "expected_pages": [2]
+    },
+    {
+        "question": "What is the largest planet in our solar system?",
+        "expected_sources": ["astronomy.pdf"],
+        "expected_pages": [4]
+    },
+    {
+        "question": "How do you declare a variable in Python?",
+        "expected_sources": ["programming.pdf"],
+        "expected_pages": [15]
+    },
+    {
+        "question": "What is the speed of light?",
+        "expected_sources": ["physics.pdf"],
+        "expected_pages": [20]
+    }
+]

@@ -1,0 +1,62 @@
+[
+    {
+        "page": 6,
+        "text": "1    UNIT I   Introduction to Machine Learning  1. Introduction    1.1 What Is Machine Learning?   Machine learning is programming computers to optimize a performance criterion using example  data or past experience. We have a model defined up to some parameters, and learning is the  execution of a "
+    },
+    {
+        "page": 13,
+        "text": "8    (x1,y1)(x2,y2)..(xn,yn) where X represents customer application details and y represents the status of  credit approval.  With these details, what is that exact knowledge to be learned from the training experience?  So the target function to be learned in the credit approval learning system is "
+    },
+    {
+        "page": 19,
+        "text": "14    or grouping in data.    Example  Consider the following data regarding patients entering a clinic. The data consists of the gender  and age of the patients.    Based on this data, can we infer anything regarding the patients entering the clinic?    1.5.3 Reinforcement learning  This is somewhe"
+    },
+    {
+        "page": 26,
+        "text": "21    \uf0b7 Let X be a set called the instance space which may be finite or infinite. For example, X may be  the set of all points in a plane.  \uf0b7 A concept class C for X is a family of functions c : X \uf0e0 {0; 1}. A member of C is called a concept.  A concept can also be thought of as a subset of X. If C i"
+    },
+    {
+        "page": 33,
+        "text": "28    Here we observe that whenever the outlook is Overcast, Play Golf is always \u2018Yes\u2019, it\u2019s no coincidence by  any chance, the simple tree resulted because of  the highest information gain is given by the attribute  Outlook. Now how do we proceed from this point? We can simply apply  recursion, you"
+    },
+    {
+        "page": 46,
+        "text": "41        The given figure illustrates the typical diagram of Biological Neural Network.     The typical Artificial Neural Network looks something like the given figure.       Dendrites from Biological Neural Network represent inputs in Artificial Neural Networks, cell nucleus represents  Nodes, syn"
+    },
+    {
+        "page": 56,
+        "text": "51        Hence, the SVM algorithm helps to find the best line or decision boundary; this best boundary or region  is called as a hyperplane. SVM algorithm finds the closest point of the lines from both the classes. These  points are called support vectors. The distance between the vectors and the h"
+    },
+    {
+        "page": 66,
+        "text": "61        Multiexpert combination   Multiexpert combination methods have base-learners that work in parallel. These methods can  in turn be divided into two:    \uf0b7 In the global approach, also called learner fusion, given an input, all base -learners generate an  output and all these outputs are used"
+    },
+    {
+        "page": 76,
+        "text": "71    \u2022 The sizes of the models created by random forests may be very large. It may take hundreds of  megabytes of memory and may be slow to evaluate.  \u2022 Random forest models are black boxes that are very hard to interpret.  3.5 Boosting  \uf0a7 Boosting: train next learner on mistakes made by previous l"
+    },
+    {
+        "page": 86,
+        "text": "81    alternates through the different choices , or it can be made randomly. The algorithm below cycles  through the possible dimensions based on the depth of the tree so far, so that in two dimensions it  alternates horizontal and vertical splits.   The centre of the construction method is simply a"
+    },
+    {
+        "page": 96,
+        "text": "91    \uf0b7 \ud835\udc44\u0302 to refer to the learner's estimate, or hypothesis, of the actual Q function    4.1.3.2. An Illustrative Example    \uf0b7 To illustrate the operation of the Q learning algorithm, consider a single action taken by an agent,  and the corresponding refinement to \ud835\udc44\u0302 shown in below figure     \uf0b7 The"
+    },
+    {
+        "page": 106,
+        "text": "101          The inputs to this algorithm include the fitness function for ranking candidate hypotheses, a  threshold defining an acceptable level of fitness for terminating the algorithm, the size of the  population to be maintained, and parameters that determine how su ccessor populations are to b"
+    },
+    {
+        "page": 111,
+        "text": "106        and the crossover points chosen for the first parent are the points following bit positions 1 and 8,        where \"[\" and \"1\" indicate crossover points, then dl = 1 and dz = 3. Hence the allowed pairs of crossover  points for the second parent include the pairs of bit positions (1,3), (1,"
+    },
+    {
+        "page": 116,
+        "text": "111        Above Figure  illustrates a typical crossover operation. It describes a set of experiments applying  a GP to a number of applications. In his experiments, 10% of the current population, selected  probabilistically according to fitness, is retained unchanged in the next generation. T he re"
+    },
+    {
+        "page": 120,
+        "text": "115    trainable and whi ch were fixed. In their experiments, when no individual learning was allowed, the  population failed to improve its fitness over time. However, when individual learning was allowed, the  population quickly improved its fitness. During early generations of ev olution the popu"
+    }
+]
