@@ -210,9 +210,9 @@ st.markdown('<div class="topbar"><div class="brand"><div class="brand-mark">N</d
 # Upload screen: file selection automatically moves into preparation.
 if st.session_state.stage == "upload":
     stepper("upload")
-    st.markdown('<div class="upload-grid"><div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes. Nexus finds the relevant evidence so you can ask better questions faster.</p><div class="feature-list"><div class="feature"><span class="feature-check">✓</span> grounded answers</div><div class="feature"><span class="feature-check">✓</span> page citations</div><div class="feature"><span class="feature-check">✓</span> private session</div></div></div><div class="upload-panel"><div class="panel-top"><div><div class="panel-title">Add your documents</div><div class="panel-subtitle">Select one or more PDF files to begin</div></div><div class="file-type">PDF</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="upload-grid"><div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes to begin.</p><div class="upload-panel">', unsafe_allow_html=True)
     uploaded_files = st.file_uploader("Drop files here or browse", type=["pdf"], accept_multiple_files=True, label_visibility="collapsed")
-    st.markdown('<div class="upload-bottom"><span>Files stay in this session</span><span>Automatic processing</span></div></div></div>', unsafe_allow_html=True)
+    st.markdown('</div></div></div>', unsafe_allow_html=True)
 
     if uploaded_files:
         current_signature = signature(uploaded_files)
