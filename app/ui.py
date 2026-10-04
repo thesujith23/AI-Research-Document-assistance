@@ -98,31 +98,31 @@ st.markdown(
 @keyframes counterspin { to { transform:rotate(-360deg); } }
 
 /* Ask screen */
-.ask-wrap { max-width:920px; margin:0 auto; }
-.ask-heading { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:1.4rem; }
-.ask-heading h1 { color:var(--ink); font-size:clamp(2.4rem,4vw,4rem); line-height:.95; letter-spacing:-.08em; margin:0; }
+.ask-wrap { max-width:1000px; margin:0 auto; height:calc(100vh - 145px); min-height:560px; overflow:hidden; }
+.ask-heading { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:.8rem; }
+.ask-heading h1 { color:var(--ink); font-size:clamp(2rem,3.3vw,3.25rem); line-height:.95; letter-spacing:-.08em; margin:0; }
 .ask-heading h1 span { color:var(--blue); }
 .library-tag { display:flex; align-items:center; gap:.45rem; color:var(--green); background:#e9f8f1; border:1px solid #c9eedf; border-radius:999px; padding:.45rem .65rem; font:500 .61rem 'DM Mono',monospace; white-space:nowrap; }
 .library-tag:before { content:'✓'; font-size:.75rem; }
-.ask-label { color:var(--blue); font:500 .62rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.13em; margin:1.5rem 0 .55rem; }
+.ask-label { color:var(--blue); font:500 .62rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.13em; margin:.75rem 0 .45rem; }
 [data-testid="stTextInput"] input { background:#fff; color:var(--ink); border:1px solid #cfd8e7; border-radius:10px; padding:.82rem .95rem; font-size:.9rem; box-shadow:0 4px 14px #1d3a6810; }
 [data-testid="stTextInput"] input:focus { border-color:var(--blue); box-shadow:0 0 0 3px #2f6bff22; }
 .ask-controls [data-testid="stCheckbox"] label { color:#667085 !important; font-size:.72rem; }
 .ask-controls .stButton > button { background:var(--blue); border-color:var(--blue); color:#fff; }
 .ask-controls .stButton > button:hover { background:#5687ff; border-color:#5687ff; }
-.quick-label { color:#98a2b3; font:500 .61rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.11em; margin:1.2rem 0 .55rem; }
+.quick-label { color:#98a2b3; font:500 .61rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.11em; margin:.7rem 0 .4rem; }
 .quick-button .stButton > button { background:#fff; color:#475467; border:1px solid var(--line); font-size:.69rem; font-weight:500; padding:.45rem .55rem; }
 .quick-button .stButton > button:hover { color:var(--blue); border-color:#b4c6e6; background:var(--blue-pale); }
 
 /* Results */
-.result-bar { display:flex; justify-content:space-between; align-items:center; margin:1.55rem 0 .65rem; }
+.result-bar { display:flex; justify-content:space-between; align-items:center; margin:.8rem 0 .45rem; }
 .result-title { color:var(--ink); font-size:.9rem; font-weight:700; }
 .result-label { color:#98a2b3; font:500 .6rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; }
-.answer-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.2rem; }
+.answer-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:.9rem 1rem; }
 .answer-question { color:#98a2b3; font:500 .6rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.55rem; }
-.answer-text { color:#344054; font-size:.92rem; line-height:1.75; }
-.source-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.65rem; }
-.source-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:.8rem; }
+.answer-text { color:#344054; font-size:.86rem; line-height:1.58; max-height:215px; overflow:hidden; }
+.source-grid { display:flex; flex-direction:column; gap:.55rem; }
+.source-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:.7rem; }
 .source-number { color:var(--blue); font:500 .6rem 'DM Mono',monospace; }
 .source-name { color:var(--ink); font-size:.72rem; font-weight:700; line-height:1.35; margin:.35rem 0; word-break:break-word; }
 .source-page { color:#8993a4; font-size:.65rem; }
@@ -260,7 +260,7 @@ else:
             pass
     
     if not api_key:
-        st.warning("⚠️ API Key is missing! The LLM will not be able to generate answers until this is set in the `.env` file or Streamlit secrets.")
+        st.caption("Add an OpenRouter or OpenAI key to generate answers.")
         
     st.markdown('<div class="ask-wrap"><div class="ask-heading"><h1>Ask your<br><span>documents.</span></h1><div class="library-tag">' + str(len(st.session_state.indexed_documents)) + ' documents ready</div></div>', unsafe_allow_html=True)
     st.markdown('<div class="ask-label">Research question</div>', unsafe_allow_html=True)
@@ -296,24 +296,30 @@ else:
                 except Exception as error:
                     st.error(f"Could not generate an answer: {error}")
 
-    if st.session_state.last_result:
-        result = st.session_state.last_result
-        st.markdown('<div class="result-bar"><div class="result-title">Answer</div><div class="result-label">grounded in your sources</div></div>', unsafe_allow_html=True)
-        st.markdown(f'<div class="answer-card"><div class="answer-question">{st.session_state.question}</div><div class="answer-text">{result.get("answer", "No answer returned.")}</div></div>', unsafe_allow_html=True)
-        sources = result.get("sources", [])
+    result_column, source_column = st.columns([1.35, 1], gap="large")
+    with result_column:
+        st.markdown('<div class="result-bar"><div class="result-title">Answer</div><div class="result-label">grounded response</div></div>', unsafe_allow_html=True)
+        if st.session_state.last_result:
+            result = st.session_state.last_result
+            st.markdown(f'<div class="answer-card"><div class="answer-question">{st.session_state.question}</div><div class="answer-text">{result.get("answer", "No answer returned.")}</div></div>', unsafe_allow_html=True)
+        else:
+            st.markdown('<div class="empty">Ask a question above and your grounded answer will appear here.</div>', unsafe_allow_html=True)
+
+    with source_column:
+        st.markdown('<div class="result-bar"><div class="result-title">Sources</div><div class="result-label">evidence trail</div></div>', unsafe_allow_html=True)
+        sources = st.session_state.last_result.get("sources", []) if st.session_state.last_result else []
         if sources:
-            st.markdown('<div class="result-bar"><div class="result-title">Sources</div><div class="result-label">evidence trail</div></div>', unsafe_allow_html=True)
             cards = '<div class="source-grid">'
             for index, source in enumerate(sources, 1):
                 score = source.get("score", source.get("reranker_score", 0))
                 cards += f'<div class="source-card"><div class="source-number">SOURCE {index:02d}</div><div class="source-name">{source.get("source", "Unknown document")}</div><div class="source-page">Page {source.get("page_number", "—")}</div><div class="source-score">match · {score:.3f}</div></div>'
             st.markdown(cards + '</div>', unsafe_allow_html=True)
-            with st.expander("View retrieved passages"):
+            with st.expander("View passages"):
                 for index, source in enumerate(sources, 1):
                     st.markdown(f"**{index}. {source.get('source', 'Unknown')} · page {source.get('page_number', '—')}**")
                     st.caption(source.get("text", "No passage text available."))
-    else:
-        st.markdown('<div class="result-bar"><div class="result-title">Answer</div><div class="result-label">waiting for your question</div></div><div class="empty">Ask a question above and your grounded answer will appear here.</div>', unsafe_allow_html=True)
+        else:
+            st.markdown('<div class="empty">Sources will appear here after your first question.</div>', unsafe_allow_html=True)
 
     if st.session_state.history:
         st.markdown('<div class="result-bar"><div class="result-title">Recent questions</div><div class="result-label">this session</div></div>', unsafe_allow_html=True)
