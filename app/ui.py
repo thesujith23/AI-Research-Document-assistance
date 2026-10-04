@@ -76,11 +76,13 @@ st.markdown(
 .feature { display:flex; align-items:center; gap:.4rem; color:#667085; background:#fff; border:1px solid var(--line); border-radius:999px; padding:.48rem .7rem; font-size:.68rem; }
 .feature-check { color:var(--green); font-weight:700; }
 .upload-panel { background:var(--white); border:1px solid var(--line); border-radius:20px; padding:1.3rem; box-shadow:0 18px 45px #162b4d0d; }
+.upload-container { background:var(--white); border:1px solid var(--line); border-radius:20px; padding:1.1rem 1.2rem .85rem; box-shadow:0 18px 45px #162b4d0d; }
 .panel-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
 .panel-title { color:var(--ink); font-size:1.05rem; font-weight:700; letter-spacing:-.03em; }
 .panel-subtitle { color:#98a2b3; font-size:.72rem; margin-top:.25rem; }
 .file-type { color:#8590a2; font:500 .6rem 'DM Mono',monospace; border:1px solid var(--line); border-radius:6px; padding:.33rem .45rem; }
 [data-testid="stFileUploader"] { background:#f9fbff; border:1px dashed #b4c6e6; border-radius:13px; padding:.15rem; }
+[data-testid="stVerticalBlockBorderWrapper"] { background:var(--white); border:1px solid var(--line); border-radius:20px; padding:1.1rem 1.2rem .85rem; box-shadow:0 18px 45px #162b4d0d; }
 [data-testid="stFileUploaderDropzone"] { background:transparent; }
 [data-testid="stFileUploaderDropzoneInstructions"] div { color:#667085; font-size:.75rem; }
 .upload-bottom { display:flex; justify-content:space-between; gap:.5rem; color:#98a2b3; font-size:.65rem; margin-top:.8rem; }
@@ -210,9 +212,11 @@ st.markdown('<div class="topbar"><div class="brand"><div class="brand-mark">N</d
 # Upload screen: file selection automatically moves into preparation.
 if st.session_state.stage == "upload":
     stepper("upload")
-    st.markdown('<div class="upload-grid"><div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes to begin.</p><div class="upload-panel">', unsafe_allow_html=True)
-    uploaded_files = st.file_uploader("Drop files here or browse", type=["pdf"], accept_multiple_files=True, label_visibility="collapsed")
-    st.markdown('</div></div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="upload-grid"><div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes to begin.</p>', unsafe_allow_html=True)
+    with st.container(border=True):
+        st.markdown('<div class="panel-top"><div><div class="panel-title">Add your documents</div><div class="panel-subtitle">Select one or more PDF files to begin</div></div><div class="file-type">PDF</div></div>', unsafe_allow_html=True)
+        uploaded_files = st.file_uploader("Upload", type=["pdf"], accept_multiple_files=True, label_visibility="collapsed")
+    st.markdown('</div></div>', unsafe_allow_html=True)
 
     if uploaded_files:
         current_signature = signature(uploaded_files)
