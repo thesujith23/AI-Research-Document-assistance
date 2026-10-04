@@ -72,6 +72,7 @@ st.markdown(
 .upload-copy h1 { color:var(--ink); font-size:clamp(3rem,5.7vw,5.2rem); line-height:.94; letter-spacing:-.085em; margin:.8rem 0 1.15rem; font-weight:700; }
 .upload-copy h1 span { color:var(--blue); }
 .upload-copy p { max-width:430px; color:var(--muted); font-size:1rem; line-height:1.65; margin:0; }
+.project-note { max-width:430px; color:#98a2b3; font-size:.78rem !important; line-height:1.55 !important; margin:.85rem 0 0 !important; }
 .feature-list { display:flex; gap:.55rem; margin-top:2rem; flex-wrap:wrap; }
 .feature { display:flex; align-items:center; gap:.4rem; color:#667085; background:#fff; border:1px solid var(--line); border-radius:999px; padding:.48rem .7rem; font-size:.68rem; }
 .feature-check { color:var(--green); font-weight:700; }
@@ -214,7 +215,7 @@ if st.session_state.stage == "upload":
     stepper("upload")
     copy_column, upload_column = st.columns([1.05, .95], gap="large")
     with copy_column:
-        st.markdown('<div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes to begin.</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes to begin.</p><p class="project-note">Nexus transforms your documents into a focused research assistant that finds relevant passages, explains the key ideas, and keeps every answer connected to its source.</p></div>', unsafe_allow_html=True)
     with upload_column:
         with st.container(border=True):
             st.markdown('<div class="panel-top"><div><div class="panel-title">Add your documents</div><div class="panel-subtitle">Select one or more PDF files to begin</div></div><div class="file-type">PDF</div></div>', unsafe_allow_html=True)
