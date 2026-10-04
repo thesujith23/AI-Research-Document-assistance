@@ -67,15 +67,16 @@ st.markdown(
 .step-line { width:52px; height:1px; background:#dfe4ec; }
 
 /* Upload screen */
-.upload-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:5rem; align-items:center; min-height:510px; }
+.upload-grid { display:flex; justify-content:center; align-items:center; min-height:510px; }
 .kicker { color:var(--blue); font:500 .66rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.14em; }
-.upload-copy h1 { color:var(--ink); font-size:clamp(3rem,5.7vw,5.2rem); line-height:.94; letter-spacing:-.085em; margin:.8rem 0 1.15rem; font-weight:700; }
+.upload-copy { width:100%; max-width:660px; text-align:center; }
+.upload-copy h1 { color:var(--ink); font-size:clamp(2.8rem,5vw,4.7rem); line-height:.94; letter-spacing:-.085em; margin:.8rem 0 1.15rem; font-weight:700; }
 .upload-copy h1 span { color:var(--blue); }
-.upload-copy p { max-width:430px; color:var(--muted); font-size:1rem; line-height:1.65; margin:0; }
-.feature-list { display:flex; gap:.55rem; margin-top:2rem; flex-wrap:wrap; }
+.upload-copy p { max-width:430px; color:var(--muted); font-size:.95rem; line-height:1.6; margin:0 auto; }
+.feature-list { display:none; }
 .feature { display:flex; align-items:center; gap:.4rem; color:#667085; background:#fff; border:1px solid var(--line); border-radius:999px; padding:.48rem .7rem; font-size:.68rem; }
 .feature-check { color:var(--green); font-weight:700; }
-.upload-panel { background:var(--white); border:1px solid var(--line); border-radius:20px; padding:1.3rem; box-shadow:0 18px 45px #162b4d0d; }
+.upload-panel { background:var(--white); border:1px solid var(--line); border-radius:20px; padding:1.3rem; margin:1.6rem auto 0; text-align:left; box-shadow:0 18px 45px #162b4d0d; }
 .panel-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; }
 .panel-title { color:var(--ink); font-size:1.05rem; font-weight:700; letter-spacing:-.03em; }
 .panel-subtitle { color:#98a2b3; font-size:.72rem; margin-top:.25rem; }
@@ -95,31 +96,31 @@ st.markdown(
 @keyframes counterspin { to { transform:rotate(-360deg); } }
 
 /* Ask screen */
-.ask-wrap { max-width:920px; margin:0 auto; }
-.ask-heading { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:1.4rem; }
-.ask-heading h1 { color:var(--ink); font-size:clamp(2.4rem,4vw,4rem); line-height:.95; letter-spacing:-.08em; margin:0; }
+.ask-wrap { max-width:980px; margin:0 auto; height:calc(100vh - 145px); min-height:560px; overflow:hidden; }
+.ask-heading { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:.75rem; }
+.ask-heading h1 { color:var(--ink); font-size:clamp(2rem,3vw,3.2rem); line-height:.95; letter-spacing:-.08em; margin:0; }
 .ask-heading h1 span { color:var(--blue); }
 .library-tag { display:flex; align-items:center; gap:.45rem; color:var(--green); background:#e9f8f1; border:1px solid #c9eedf; border-radius:999px; padding:.45rem .65rem; font:500 .61rem 'DM Mono',monospace; white-space:nowrap; }
 .library-tag:before { content:'✓'; font-size:.75rem; }
-.ask-label { color:var(--blue); font:500 .62rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.13em; margin:1.5rem 0 .55rem; }
+.ask-label { color:var(--blue); font:500 .62rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.13em; margin:.8rem 0 .45rem; }
 [data-testid="stTextInput"] input { background:#fff; color:var(--ink); border:1px solid #cfd8e7; border-radius:10px; padding:.82rem .95rem; font-size:.9rem; box-shadow:0 4px 14px #1d3a6810; }
 [data-testid="stTextInput"] input:focus { border-color:var(--blue); box-shadow:0 0 0 3px #2f6bff22; }
 .ask-controls [data-testid="stCheckbox"] label { color:#667085 !important; font-size:.72rem; }
 .ask-controls .stButton > button { background:var(--blue); border-color:var(--blue); color:#fff; }
 .ask-controls .stButton > button:hover { background:#5687ff; border-color:#5687ff; }
-.quick-label { color:#98a2b3; font:500 .61rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.11em; margin:1.2rem 0 .55rem; }
+.quick-label { color:#98a2b3; font:500 .61rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.11em; margin:.75rem 0 .4rem; }
 .quick-button .stButton > button { background:#fff; color:#475467; border:1px solid var(--line); font-size:.69rem; font-weight:500; padding:.45rem .55rem; }
 .quick-button .stButton > button:hover { color:var(--blue); border-color:#b4c6e6; background:var(--blue-pale); }
 
 /* Results */
-.result-bar { display:flex; justify-content:space-between; align-items:center; margin:1.55rem 0 .65rem; }
+.result-bar { display:flex; justify-content:space-between; align-items:center; margin:.8rem 0 .45rem; }
 .result-title { color:var(--ink); font-size:.9rem; font-weight:700; }
 .result-label { color:#98a2b3; font:500 .6rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; }
-.answer-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:1.1rem 1.2rem; }
+.answer-card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:.8rem 1rem; }
 .answer-question { color:#98a2b3; font:500 .6rem 'DM Mono',monospace; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.55rem; }
-.answer-text { color:#344054; font-size:.92rem; line-height:1.75; }
+.answer-text { color:#344054; font-size:.82rem; line-height:1.5; max-height:112px; overflow:hidden; }
 .source-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.65rem; }
-.source-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:.8rem; }
+.source-card { background:#fff; border:1px solid var(--line); border-radius:12px; padding:.65rem; }
 .source-number { color:var(--blue); font:500 .6rem 'DM Mono',monospace; }
 .source-name { color:var(--ink); font-size:.72rem; font-weight:700; line-height:1.35; margin:.35rem 0; word-break:break-word; }
 .source-page { color:#8993a4; font-size:.65rem; }
@@ -210,9 +211,9 @@ st.markdown('<div class="topbar"><div class="brand"><div class="brand-mark">N</d
 # Upload screen: file selection automatically moves into preparation.
 if st.session_state.stage == "upload":
     stepper("upload")
-    st.markdown('<div class="upload-grid"><div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes. Nexus finds the relevant evidence so you can ask better questions faster.</p><div class="feature-list"><div class="feature"><span class="feature-check">✓</span> grounded answers</div><div class="feature"><span class="feature-check">✓</span> page citations</div><div class="feature"><span class="feature-check">✓</span> private session</div></div></div><div class="upload-panel"><div class="panel-top"><div><div class="panel-title">Add your documents</div><div class="panel-subtitle">Select one or more PDF files to begin</div></div><div class="file-type">PDF</div></div>', unsafe_allow_html=True)
+    st.markdown('<div class="upload-grid"><div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes to begin.</p><div class="upload-panel">', unsafe_allow_html=True)
     uploaded_files = st.file_uploader("Drop files here or browse", type=["pdf"], accept_multiple_files=True, label_visibility="collapsed")
-    st.markdown('<div class="upload-bottom"><span>Files stay in this session</span><span>Automatic processing</span></div></div></div>', unsafe_allow_html=True)
+    st.markdown('</div></div></div>', unsafe_allow_html=True)
 
     if uploaded_files:
         current_signature = signature(uploaded_files)
