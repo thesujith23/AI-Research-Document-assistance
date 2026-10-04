@@ -212,11 +212,13 @@ st.markdown('<div class="topbar"><div class="brand"><div class="brand-mark">N</d
 # Upload screen: file selection automatically moves into preparation.
 if st.session_state.stage == "upload":
     stepper("upload")
-    st.markdown('<div class="upload-grid"><div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes to begin.</p>', unsafe_allow_html=True)
-    with st.container(border=True):
-        st.markdown('<div class="panel-top"><div><div class="panel-title">Add your documents</div><div class="panel-subtitle">Select one or more PDF files to begin</div></div><div class="file-type">PDF</div></div>', unsafe_allow_html=True)
-        uploaded_files = st.file_uploader("Upload", type=["pdf"], accept_multiple_files=True, label_visibility="collapsed")
-    st.markdown('</div></div>', unsafe_allow_html=True)
+    upload_column, copy_column = st.columns([.95, 1.05], gap="large")
+    with upload_column:
+        with st.container(border=True):
+            st.markdown('<div class="panel-top"><div><div class="panel-title">Add your documents</div><div class="panel-subtitle">Select one or more PDF files to begin</div></div><div class="file-type">PDF</div></div>', unsafe_allow_html=True)
+            uploaded_files = st.file_uploader("Upload", type=["pdf"], accept_multiple_files=True, label_visibility="collapsed")
+    with copy_column:
+        st.markdown('<div class="upload-copy"><div class="kicker">AI research workspace</div><h1>Turn documents<br>into <span>clarity.</span></h1><p>Upload your papers, reports, or notes to begin.</p></div>', unsafe_allow_html=True)
 
     if uploaded_files:
         current_signature = signature(uploaded_files)
